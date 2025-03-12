@@ -1,69 +1,10 @@
-Processamento do Dataset Iris e Geração de DataFrame Tratado
-
 Introdução
+O tratamento de dados é uma das etapas mais importantes na Ciência de Dados. Um dataset desorganizado pode comprometer análises e modelos de Machine Learning. Neste artigo, vamos explorar como transformar o famoso dataset Iris em um DataFrame tratado e pronto para uso, utilizando Python, Pandas e Scikit-learn.
+O que é o dataset Iris?
+O dataset Iris é um conjunto de dados clássico em Machine Learning, contendo 150 amostras de três espécies de flores (Setosa, Versicolor e Virginica). Cada amostra possui quatro características:
+Comprimento da sépala (cm)
+Largura da sépala (cm)
+Comprimento da pétala (cm)
+Largura da pétala (cm)
 
-O objetivo deste trabalho foi transformar o dataset Iris, fornecido pela biblioteca scikit-learn, em um DataFrame estruturado e tratado para exportação. As informações estavam organizadas como arrays do tipo NumPy, contendo:
-
-data: matriz com os valores das features.
-
-feature_names: nomes das colunas das features.
-
-target: array com os valores numéricos correspondentes às classes.
-
-target_names: nomes reais das classes.
-
-Etapas do Processamento
-
-Etapa 0 - Importação do Dataset e Exploração das Chaves
-
-O dataset foi importado utilizando datasets.load_iris(). Em seguida, foram exploradas suas chaves para entender sua estrutura.
-
-As principais chaves presentes no dataset são:
-
-data: contém as features do dataset.
-
-target: contém a variável de classificação numérica.
-
-target_names: representa os nomes reais das classes.
-
-feature_names: contém os nomes das colunas das features.
-
-Etapa 1 - Conversão dos Dados para um DataFrame
-
-Os dados das features foram extraídos e convertidos para um DataFrame Pandas. Como os valores estavam armazenados como um array NumPy, foi necessário convertê-los para uma lista antes de criar o DataFrame.
-
-Inicialmente, as colunas foram nomeadas de forma provisória ('1', '2', '3', '4').
-
-Etapa 2 - Conversão do Target para um DataFrame
-
-A variável target, que contém as classes numéricas (0, 1, 2), foi transformada em uma lista e, posteriormente, em um DataFrame Pandas, nomeado como Class.
-
-Etapa 3 - Tratamento dos Nomes das Colunas
-
-Os nomes das colunas foram extraídos da chave feature_names. Como continham espaços e a unidade (cm), foi necessário realizar dois tratamentos:
-
-Remoção de " (cm)".
-
-Substituição dos espaços por "-".
-
-Essas transformações foram aplicadas utilizando map() e lambda para garantir a padronização.
-
-Etapa 4 - Renomeação das Colunas no DataFrame
-
-Após o tratamento, os novos nomes foram aplicados diretamente ao DataFrame de features utilizando dados.columns = colunas(iris.feature_names).
-
-Etapa 5 - Substituição dos Valores Numéricos do Target por Seus Nomes Correspondentes
-
-Os valores 0, 1, 2 da coluna target foram substituídos pelos respectivos nomes das classes: setosa, versicolor e virginica. Isso foi feito com .replace().
-
-Etapa 6 - Junção dos Dados e Criação do DataFrame Final
-
-O DataFrame contendo as features e o DataFrame das classes foram combinados em um único conjunto de dados utilizando pd.concat([...], axis=1), gerando o DataFrame final tratado.
-
-Etapa 7 - Exportação do DataFrame
-
-O DataFrame tratado foi salvo como um arquivo CSV (iris_Data_Frame.csv), utilizando separador ;, codificação utf-8 e removendo o índice.
-
-Resultado Final
-
-O resultado foi um DataFrame organizado e pronto para análise exploratória e modelagem. A estrutura final continha as features com nomes padronizados e as classes identificadas por seus nomes reais.
+Nosso objetivo é transformar esses dados brutos em um DataFrame estruturado, garantindo que os nomes das colunas estejam organizados e que as classes sejam representadas corretamente.
